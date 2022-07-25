@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+let name = "Abdullah";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //using jsx fragment because it returns only 1 tag
+    <>
+      <nav>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+      </nav>
+      <br />
+      <h1>Hello {name}</h1>
+      <div className="container">
+        Lorem, ipsum dolor <b>sit</b> amet consectetur adipisicing elit. Dolorem
+        doloribus voluptate corrupti excepturi consequatur odit sapiente modi
+        qui, alias officiis consectetur libero veniam. Voluptas quasi eaque
+        nihil quia sint optio!
+      </div>
+    </>
   );
 }
 
