@@ -1,5 +1,6 @@
 import "./App.css";
 import About from "./Components/About/About";
+import DarkMode from "./Components/DarkButton/DarkMode";
 import MyNavbar from "./Components/Navbar/MyNavbar";
 import TextForm from "./Components/TextForm/TextForm";
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <TextForm heading="Enter some text" />
       </div>
       <About />
+      {/* <DarkMode /> */}
     </>
   );
 }
