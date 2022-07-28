@@ -4,6 +4,7 @@ export default function About() {
   return (
     <>
       <div className="container">
+        <h3>About Us</h3>
         <div className="accordion" id="accordionExample">
           <div className="card">
             <div className="card-header" id="headingOne">

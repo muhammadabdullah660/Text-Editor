@@ -1,7 +1,7 @@
 import "./App.css";
-import About from "./Components/About";
-import MyNavbar from "./Components/MyNavbar";
-import TextForm from "./Components/TextForm";
+import About from "./Components/About/About";
+import MyNavbar from "./Components/Navbar/MyNavbar";
+import TextForm from "./Components/TextForm/TextForm";
 function App() {
   return (
     //using jsx fragment because it returns only 1 tag
