@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types"; //impt
-const countOcc = (string, subString) => {
-  let count = string.split(subString).length - 1;
-  return count;
-};
+
 export default function TextForm(props) {
+  const countOcc = (string, subString) => {
+    let count = string.split(subString).length - 1;
+    return count;
+  };
+  const handleCopy = () => {
+    let text = document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
+  const handleExtraSpace = () => {
+    let newText = txt.split(/[ ]+/);
+    setTxt(newText.join(" "));
+  };
   const handleUpCaseClick = () => {
     //console.log("UpperCase was clicked" + txt);
     let newText = txt.toUpperCase();
@@ -54,6 +64,12 @@ export default function TextForm(props) {
           </button>{" "}
           <button className="btn btn-primary" onClick={handleClearClick}>
             Clear Text
+          </button>{" "}
+          <button className="btn btn-primary" onClick={handleCopy}>
+            Copy Text
+          </button>{" "}
+          <button className="btn btn-primary" onClick={handleExtraSpace}>
+            Remove extra spaces
           </button>
         </form>
       </div>
