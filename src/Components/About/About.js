@@ -104,7 +104,7 @@ export default function About() {
         </div>
       </div>
       <div className="container my-2">
-        <button type="button" class="btn btn-dark" onClick={toggleDarkMode}>
+        <button type="button" className="btn btn-dark" onClick={toggleDarkMode}>
           {btnText}
         </button>
       </div>

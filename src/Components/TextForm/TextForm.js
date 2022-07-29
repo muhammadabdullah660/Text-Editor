@@ -49,6 +49,10 @@ export default function TextForm(props) {
           <div className="form-group">
             <label htmlFor="myBox">{props.heading}</label>
             <textarea
+              style={{
+                backgroundColor: props.mode === "light" ? "white" : "#424445",
+                color: props.mode === "light" ? "#424445" : "white",
+              }}
               className="form-control"
               id="myBox"
               rows="5"

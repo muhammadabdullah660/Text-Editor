@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 export default function MyNavbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+    >
       <a className="navbar-brand" href="/">
         {props.title}
       </a>
@@ -45,6 +47,18 @@ export default function MyNavbar(props) {
             Search
           </button>
         </form>
+        {/* Switch Button */}
+        <div className="custom-control custom-switch my-3">
+          <input
+            type="checkbox"
+            className="custom-control-input"
+            id="customSwitch1"
+            onClick={props.toggleMode}
+          />
+          <label className="custom-control-label" htmlFor="customSwitch1">
+            Enable Dark Mode
+          </label>
+        </div>
       </div>
     </nav>
   );
