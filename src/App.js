@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import About from "./Components/About/About";
+import Alert from "./Components/Alert/Alert";
 import MyNavbar from "./Components/Navbar/MyNavbar";
 import TextForm from "./Components/TextForm/TextForm";
 function App() {
@@ -30,7 +31,7 @@ function App() {
       <div className="container">
         <TextForm heading="Enter some text" mode={mode} />
       </div>
-      <About />
+      <About mode={mode} />
     </>
   );
 }

@@ -1,33 +1,40 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [customStyle, setcustomStyle] = useState({
-    color: "white",
-    backgroundColor: "black",
-  });
-  const toggleDarkMode = () => {
-    if (customStyle.color === "white") {
-      setcustomStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setbtnText("Dark Mode");
-    } else {
-      setcustomStyle({
-        color: "white",
-        backgroundColor: "black",
-      });
-      setbtnText("Light Mode");
-    }
-  };
-  const [btnText, setbtnText] = useState("Light Mode");
+export default function About(props) {
+  // const [customStyle, setcustomStyle] = useState({
+  //   color: "white",
+  //   backgroundColor: "black",
+  // });
+  // const toggleDarkMode = () => {
+  //   if (customStyle.color === "white") {
+  //     setcustomStyle({
+  //       color: "black",
+  //       backgroundColor: "white",
+  //     });
+  //     setbtnText("Dark Mode");
+  //   } else {
+  //     setcustomStyle({
+  //       color: "white",
+  //       backgroundColor: "black",
+  //     });
+  //     setbtnText("Light Mode");
+  //   }
+  // };
+  // const [btnText, setbtnText] = useState("Light Mode");
   return (
     <>
-      <div className="container" style={customStyle}>
+      <div className="container">
         <h3>About Us</h3>
         <div className="accordion" id="accordionExample">
           <div className="card">
-            <div className="card-header" id="headingOne" style={customStyle}>
+            <div
+              className="card-header"
+              id="headingOne"
+              style={{
+                backgroundColor: props.mode === "light" ? "" : "black",
+                color: props.mode === "light" ? "" : "white",
+              }}
+            >
               <h2 className="mb-0">
                 <button
                   className="btn btn-link"
@@ -36,7 +43,11 @@ export default function About() {
                   data-target="#collapseOne"
                   aria-expanded="true"
                   aria-controls="collapseOne"
-                  style={customStyle}
+                  style={{
+                    backgroundColor:
+                      props.mode === "light" ? "white" : "#424445",
+                    color: props.mode === "light" ? "#424445" : "white",
+                  }}
                 >
                   Collapsible Group Item #1
                 </button>
@@ -48,9 +59,15 @@ export default function About() {
               className="collapse show"
               aria-labelledby="headingOne"
               data-parent="#accordionExample"
-              style={customStyle}
+              //style={customStyle}
             >
-              <div className="card-body">
+              <div
+                className="card-body"
+                style={{
+                  backgroundColor: props.mode === "light" ? "white" : "#424445",
+                  color: props.mode === "light" ? "#424445" : "white",
+                }}
+              >
                 Anim pariatur cliche reprehenderit, enim eiusmod high life
                 accusamus terry richardson ad squid. 3 wolf moon officia aute,
                 non cupidatat skateboard dolor brunch. Food truck quinoa
@@ -65,7 +82,14 @@ export default function About() {
             </div>
           </div>
           <div className="card">
-            <div className="card-header" id="headingTwo" style={customStyle}>
+            <div
+              className="card-header"
+              id="headingTwo"
+              style={{
+                backgroundColor: props.mode === "light" ? "" : "black",
+                color: props.mode === "light" ? "#424445" : "white",
+              }}
+            >
               <h2 className="mb-0">
                 <button
                   className="btn btn-link collapsed"
@@ -74,7 +98,11 @@ export default function About() {
                   data-target="#collapseTwo"
                   aria-expanded="false"
                   aria-controls="collapseTwo"
-                  style={customStyle}
+                  style={{
+                    backgroundColor:
+                      props.mode === "light" ? "white" : "#424445",
+                    color: props.mode === "light" ? "#424445" : "white",
+                  }}
                 >
                   Collapsible Group Item #2
                 </button>
@@ -85,9 +113,15 @@ export default function About() {
               className="collapse"
               aria-labelledby="headingTwo"
               data-parent="#accordionExample"
-              style={customStyle}
+              // //style={customStyle}
             >
-              <div className="card-body">
+              <div
+                className="card-body"
+                style={{
+                  backgroundColor: props.mode === "light" ? "white" : "#424445",
+                  color: props.mode === "light" ? "#424445" : "white",
+                }}
+              >
                 Anim pariatur cliche reprehenderit, enim eiusmod high life
                 accusamus terry richardson ad squid. 3 wolf moon officia aute,
                 non cupidatat skateboard dolor brunch. Food truck quinoa
@@ -103,11 +137,11 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="container my-2">
+      {/* <div className="container my-2">
         <button type="button" className="btn btn-dark" onClick={toggleDarkMode}>
           {btnText}
         </button>
-      </div>
+      </div> */}
     </>
   );
 }
