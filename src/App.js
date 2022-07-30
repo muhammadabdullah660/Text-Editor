@@ -7,7 +7,16 @@ import TextForm from "./Components/TextForm/TextForm";
 function App() {
   const [mode, setmode] = useState("light");
   const [alert, setalert] = useState(null);
-  const toggleMode = () => {
+  const removeClass = () => {
+    document.body.classList.remove("bg-light");
+    document.body.classList.remove("bg-dark");
+    document.body.classList.remove("bg-danger");
+  };
+
+  const toggleMode = (cls) => {
+    removeClass();
+    document.body.classList.add("bg-" + cls);
+    //setmode(cls);
     if (mode === "light") {
       setmode("dark");
       showAlert("Dark mode has been enabled", "warning");
