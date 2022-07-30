@@ -10,19 +10,23 @@ export default function TextForm(props) {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to Clipboard", "success");
   };
   const handleExtraSpace = () => {
     let newText = txt.split(/[ ]+/);
     setTxt(newText.join(" "));
+    props.showAlert("Extra Spaces removed", "success");
   };
   const handleUpCaseClick = () => {
     //console.log("UpperCase was clicked" + txt);
     let newText = txt.toUpperCase();
     setTxt(newText);
+    props.showAlert("Converted to Uppercase", "success");
   };
   const handleLoCaseClick = () => {
     let newText = txt.toLowerCase();
     setTxt(newText);
+    props.showAlert("Converted to Lowercase", "success");
   };
   const handleFindClick = () => {
     setCount(countOcc(txt, findWord));
@@ -31,6 +35,7 @@ export default function TextForm(props) {
   const handleClearClick = () => {
     let newText = "";
     setTxt(newText);
+    props.showAlert("Text Cleared", "success");
   };
   const handleOnChange = (event) => {
     //console.log("On change");
