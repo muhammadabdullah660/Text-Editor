@@ -22,11 +22,20 @@ function App() {
       showAlert("Dark mode has been enabled", "warning");
       document.body.style.backgroundColor = "#424445";
       document.body.style.color = "white";
+      document.title = "Text Editor - Dark Mode";
+      //Changing title over time
+      setInterval(() => {
+        document.title = "Text Editor - Dark Mode";
+      }, 2000);
+      setInterval(() => {
+        document.title = "Text Editor is amazing";
+      }, 1500);
     } else {
       setmode("light");
       showAlert("Light mode has been enabled", "warning");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "#424445";
+      document.title += " - Light Mode";
     }
   };
   const showAlert = (message, type) => {
