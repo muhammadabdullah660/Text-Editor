@@ -4,6 +4,7 @@ import About from "./Components/About/About";
 import Alert from "./Components/Alert/Alert";
 import MyNavbar from "./Components/Navbar/MyNavbar";
 import TextForm from "./Components/TextForm/TextForm";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const [mode, setmode] = useState("light");
   const [alert, setalert] = useState(null);
@@ -51,21 +52,33 @@ function App() {
   return (
     //using jsx fragment because it returns only 1 tag
     <>
-      <MyNavbar
-        title="Text Editor"
-        menu1="Home"
-        menu2="About Us"
-        mode={mode}
-        toggleMode={toggleMode}
-      />
-      <Alert
-        //mode={mode}
-        alert={alert}
-      />
-      <div className="container">
-        <TextForm heading="Enter some text" showAlert={showAlert} mode={mode} />
-      </div>
-      <About mode={mode} />
+      <Router>
+        <MyNavbar
+          title="Text Editor"
+          menu1="Home"
+          menu2="About Us"
+          mode={mode}
+          toggleMode={toggleMode}
+        />
+        <Alert
+          //mode={mode}
+          alert={alert}
+        />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <TextForm
+                heading="Enter some text"
+                showAlert={showAlert}
+                mode={mode}
+              />
+            }
+          ></Route>
+          <Route exact path="/about" element={<About mode={mode} />}></Route>{" "}
+        </Routes>
+      </Router>
     </>
   );
 }

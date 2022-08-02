@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
 export default function MyNavbar(props) {
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
     >
-      <a className="navbar-brand" href="/">
+      <Link className="navbar-brand" to="/">
         {props.title}
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -23,14 +25,14 @@ export default function MyNavbar(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/">
               {props.menu1} <span className="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/about">
               {props.menu2}
-            </a>
+            </Link>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">
