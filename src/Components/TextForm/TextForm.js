@@ -52,7 +52,7 @@ export default function TextForm(props) {
       <div className="container">
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="form-group">
-            <label htmlFor="myBox">{props.heading}</label>
+            <h4>{props.heading}</h4>
             <textarea
               style={{
                 backgroundColor: props.mode === "light" ? "white" : "#424445",

@@ -70,9 +70,9 @@ function App() {
             path="/"
             element={
               <TextForm
-                heading="Enter some text"
                 showAlert={showAlert}
                 mode={mode}
+                heading="Try TextEditor - Word counter, Character counter, Lowercase to Uppercase and Uppercase to Lowercase, Remove Extra spaces"
               />
             }
           ></Route>

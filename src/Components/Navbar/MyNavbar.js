@@ -51,10 +51,10 @@ export default function MyNavbar(props) {
         </form>
 
         {/* Switch Button */}
-        <div className="custom-control custom-switch my-3">
+        <div className="custom-control custom-switch my-3 mx-2">
           <input
             type="checkbox"
-            className="custom-control-input"
+            className="custom-control-input "
             id="customSwitch1"
             onClick={() => {
               props.toggleMode(null);
