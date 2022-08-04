@@ -103,7 +103,7 @@ export default function TextForm(props) {
         {/* Tells time required to read depending on number of words */}
         <h4>
           Total time to read the text :{" "}
-          {(txt.match(/\S+/g) || []).length * 0.008 * 60} minutes
+          {(txt.match(/\S+/g) || []).length * 0.008} minutes
         </h4>{" "}
         <br />
         {/* Simple preview of text */}
