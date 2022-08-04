@@ -10,6 +10,7 @@ export default function TextForm(props) {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert("Copied to Clipboard", "success");
   };
   const handleExtraSpace = () => {
@@ -68,26 +69,34 @@ export default function TextForm(props) {
           <button
             className="btn btn-primary mx-1 my-1"
             onClick={handleUpCaseClick}
+            disabled={txt.length === 0}
           >
             Convert to Uppercase
           </button>{" "}
           <button
             className="btn btn-primary mx-1 my-1"
             onClick={handleLoCaseClick}
+            disabled={txt.length === 0}
           >
             Convert to Lowercase
           </button>{" "}
           <button
             className="btn btn-primary mx-1 my-1"
             onClick={handleClearClick}
+            disabled={txt.length === 0}
           >
             Clear Text
           </button>{" "}
-          <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>
+          <button
+            className="btn btn-primary mx-1 my-1"
+            disabled={txt.length === 0}
+            onClick={handleCopy}
+          >
             Copy Text
           </button>{" "}
           <button
             className="btn btn-primary mx-1 my-1"
+            disabled={txt.length === 0}
             onClick={handleExtraSpace}
           >
             Remove extra spaces
@@ -108,7 +117,7 @@ export default function TextForm(props) {
         <br />
         {/* Simple preview of text */}
         <h3>Text Preview</h3>
-        <p>{txt}</p>
+        <p>{txt.length === 0 ? "Nothing to Preview" : txt}</p>
         {/* Count number of occurences of a word */}
         <h4>Enter a word to find</h4>
         <input
