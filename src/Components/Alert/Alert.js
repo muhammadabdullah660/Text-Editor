@@ -6,18 +6,16 @@ export default function Alert(props) {
   };
 
   return (
-    props.alert && (
-      <div
-        className={`alert alert-${props.alert.type} alert-dismissible fade show`}
-        role="alert"
-        // style={{
-        //   backgroundColor: props.mode === "dark" ? "#042745" : "",
-        //   color: props.mode === "dark" ? "white" : "",
-        // }}
-      >
-        {capitalize(props.alert.type)}: {capitalize(props.alert.message)}
-      </div>
-    )
+    <div style={{ height: "4pc" }}>
+      {props.alert && (
+        <div
+          className={`alert alert-${props.alert.type} alert-dismissible fade show`}
+          role="alert"
+        >
+          {capitalize(props.alert.type)}: {capitalize(props.alert.message)}
+        </div>
+      )}
+    </div>
   );
 }
 Alert.defaultProps = {
