@@ -1,26 +1,16 @@
 import React from "react";
 
 export default function About(props) {
-  // const [customStyle, setcustomStyle] = useState({
-  //   color: "white",
-  //   backgroundColor: "black",
-  // });
-  // const toggleDarkMode = () => {
-  //   if (customStyle.color === "white") {
-  //     setcustomStyle({
-  //       color: "black",
-  //       backgroundColor: "white",
-  //     });
-  //     setbtnText("Dark Mode");
-  //   } else {
-  //     setcustomStyle({
-  //       color: "white",
-  //       backgroundColor: "black",
-  //     });
-  //     setbtnText("Light Mode");
-  //   }
-  // };
-  // const [btnText, setbtnText] = useState("Light Mode");
+  let customStyleHeader = {
+    backgroundColor: props.mode === "light" ? "" : "black",
+    color: props.mode === "light" ? "" : "white",
+  };
+  let customStyle = {
+    backgroundColor: props.mode === "light" ? "white" : "#424445",
+    color: props.mode === "light" ? "#424445" : "white",
+    border: "2px solid",
+    borderColor: props.mode === "light" ? "#424445" : "white",
+  };
   return (
     <>
       <div className="container">
@@ -30,10 +20,7 @@ export default function About(props) {
             <div
               className="card-header"
               id="headingOne"
-              style={{
-                backgroundColor: props.mode === "light" ? "" : "black",
-                color: props.mode === "light" ? "" : "white",
-              }}
+              style={customStyleHeader}
             >
               <h2 className="mb-0">
                 <button
@@ -43,13 +30,9 @@ export default function About(props) {
                   data-target="#collapseOne"
                   aria-expanded="true"
                   aria-controls="collapseOne"
-                  style={{
-                    backgroundColor:
-                      props.mode === "light" ? "white" : "#424445",
-                    color: props.mode === "light" ? "#424445" : "white",
-                  }}
+                  style={customStyle}
                 >
-                  Collapsible Group Item #1
+                  Analyze Your text
                 </button>
               </h2>
             </div>
@@ -59,25 +42,10 @@ export default function About(props) {
               className="collapse show"
               aria-labelledby="headingOne"
               data-parent="#accordionExample"
-              //style={customStyle}
             >
-              <div
-                className="card-body"
-                style={{
-                  backgroundColor: props.mode === "light" ? "white" : "#424445",
-                  color: props.mode === "light" ? "#424445" : "white",
-                }}
-              >
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                non cupidatat skateboard dolor brunch. Food truck quinoa
-                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer
-                farm-to-table, raw denim aesthetic synth nesciunt you probably
-                haven't heard of them accusamus labore sustainable VHS.
+              <div className="card-body" style={customStyle}>
+                Texticles gives you a way to analyze your text quickly and
+                efficiently. Be it word count, character count or
               </div>
             </div>
           </div>
@@ -85,10 +53,7 @@ export default function About(props) {
             <div
               className="card-header"
               id="headingTwo"
-              style={{
-                backgroundColor: props.mode === "light" ? "" : "black",
-                color: props.mode === "light" ? "#424445" : "white",
-              }}
+              style={customStyleHeader}
             >
               <h2 className="mb-0">
                 <button
@@ -98,13 +63,9 @@ export default function About(props) {
                   data-target="#collapseTwo"
                   aria-expanded="false"
                   aria-controls="collapseTwo"
-                  style={{
-                    backgroundColor:
-                      props.mode === "light" ? "white" : "#424445",
-                    color: props.mode === "light" ? "#424445" : "white",
-                  }}
+                  style={customStyle}
                 >
-                  Collapsible Group Item #2
+                  Free to use
                 </button>
               </h2>
             </div>
@@ -113,35 +74,51 @@ export default function About(props) {
               className="collapse"
               aria-labelledby="headingTwo"
               data-parent="#accordionExample"
-              // //style={customStyle}
             >
-              <div
-                className="card-body"
-                style={{
-                  backgroundColor: props.mode === "light" ? "white" : "#424445",
-                  color: props.mode === "light" ? "#424445" : "white",
-                }}
-              >
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                non cupidatat skateboard dolor brunch. Food truck quinoa
-                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer
-                farm-to-table, raw denim aesthetic synth nesciunt you probably
-                haven't heard of them accusamus labore sustainable VHS.
+              <div className="card-body" style={customStyle}>
+                Texticles is a free character counter tool that provides instant
+                character count & word count statistics for a given text.
+                Texticles reports the number of words and characters. Thus it is
+                suitable for writing text with word/ character limit.
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div
+              className="card-header"
+              id="headingThree"
+              style={customStyleHeader}
+            >
+              <h2 className="mb-0">
+                <button
+                  className="btn btn-link collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                  style={customStyle}
+                >
+                  Browser Compatible
+                </button>
+              </h2>
+            </div>
+            <div
+              id="collapseThree"
+              className="collapse"
+              aria-labelledby="headingThree"
+              data-parent="#accordionExample"
+            >
+              <div className="card-body" style={customStyle}>
+                This word counter software works in any web browsers such as
+                Chrome, Firefox, Internet Explorer, Safari, Opera. It suits to
+                count characters in facebook, blog, books, excel document, pdf
+                document, essays, etc.
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* <div className="container my-2">
-        <button type="button" className="btn btn-dark" onClick={toggleDarkMode}>
-          {btnText}
-        </button>
-      </div> */}
     </>
   );
 }

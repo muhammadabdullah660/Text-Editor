@@ -65,19 +65,31 @@ export default function TextForm(props) {
               onChange={handleOnChange}
             ></textarea>
           </div>
-          <button className="btn btn-primary" onClick={handleUpCaseClick}>
+          <button
+            className="btn btn-primary mx-1 my-1"
+            onClick={handleUpCaseClick}
+          >
             Convert to Uppercase
           </button>{" "}
-          <button className="btn btn-primary" onClick={handleLoCaseClick}>
+          <button
+            className="btn btn-primary mx-1 my-1"
+            onClick={handleLoCaseClick}
+          >
             Convert to Lowercase
           </button>{" "}
-          <button className="btn btn-primary" onClick={handleClearClick}>
+          <button
+            className="btn btn-primary mx-1 my-1"
+            onClick={handleClearClick}
+          >
             Clear Text
           </button>{" "}
-          <button className="btn btn-primary" onClick={handleCopy}>
+          <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>
             Copy Text
           </button>{" "}
-          <button className="btn btn-primary" onClick={handleExtraSpace}>
+          <button
+            className="btn btn-primary mx-1 my-1"
+            onClick={handleExtraSpace}
+          >
             Remove extra spaces
           </button>
         </form>
@@ -90,8 +102,8 @@ export default function TextForm(props) {
         </h4>
         {/* Tells time required to read depending on number of words */}
         <h4>
-          Total time to read the text : {txt.split(" ").length * 0.008 * 60}{" "}
-          minutes
+          Total time to read the text :{" "}
+          {(txt.match(/\S+/g) || []).length * 0.008 * 60} minutes
         </h4>{" "}
         <br />
         {/* Simple preview of text */}

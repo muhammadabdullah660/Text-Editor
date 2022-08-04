@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function MyNavbar(props) {
+  const capitalize = (word) => {
+    const lower = word.toLowerCase();
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  };
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
@@ -49,31 +53,9 @@ export default function MyNavbar(props) {
             Search
           </button>
         </form>
-        <div className="d-flex">
-          <div
-            className="bg-danger rounded mx-2"
-            style={{ height: "20px", width: "20px" }}
-            onClick={() => {
-              props.toggleMode("danger");
-            }}
-          ></div>{" "}
-          <div
-            className="bg-light rounded mx-2"
-            style={{ height: "20px", width: "20px" }}
-            onClick={() => {
-              props.toggleMode("light");
-            }}
-          ></div>{" "}
-          <div
-            className="bg-dark rounded mx-2"
-            style={{ height: "20px", width: "20px" }}
-            onClick={() => {
-              props.toggleMode("dark");
-            }}
-          ></div>
-        </div>
+
         {/* Switch Button */}
-        {/* <div className="custom-control custom-switch my-3">
+        <div className="custom-control custom-switch my-3">
           <input
             type="checkbox"
             className="custom-control-input"
@@ -83,9 +65,9 @@ export default function MyNavbar(props) {
             }}
           />
           <label className="custom-control-label" htmlFor="customSwitch1">
-            Toggle Mode
+            {props.mode === "light" ? "Dark" : "Light"} Mode
           </label>
-        </div> */}
+        </div>
       </div>
     </nav>
   );
