@@ -62,6 +62,19 @@ export default function TextForm(props) {
       setcenter(false);
     }
   };
+  const toggleRight = () => {
+    let newText = document.getElementById("myBox");
+    if (!right) {
+      newText.style.textAlign = "right";
+      props.showAlert("Right Aligned", "success");
+      setright(true);
+    } else {
+      newText.style.textAlign = "left";
+      props.showAlert("Default", "success");
+      setright(false);
+    }
+  };
+
   const handleFindClick = () => {
     setCount(countOcc(txt, findWord));
     console.log(countOcc(txt, findWord));
@@ -98,9 +111,7 @@ export default function TextForm(props) {
   const [bold, setbold] = useState(false);
   const [italic, setitalic] = useState(false);
   const [center, setcenter] = useState(false);
-  const [left, setleft] = useState(false);
   const [right, setright] = useState(false);
-  const [justify, setjustify] = useState(false);
   return (
     <>
       <div className="container">
@@ -156,6 +167,22 @@ export default function TextForm(props) {
                       htmlFor="customSwitch4"
                     >
                       Center Align
+                    </label>
+                  </div>
+                </div>
+                <div className="col-1 col-sm-4">
+                  <div className="custom-control custom-switch my-3 mx-2">
+                    <input
+                      type="checkbox"
+                      className="custom-control-input "
+                      id="customSwitch5"
+                      onClick={toggleRight}
+                    />
+                    <label
+                      className="custom-control-label"
+                      htmlFor="customSwitch5"
+                    >
+                      Right Align
                     </label>
                   </div>
                 </div>
