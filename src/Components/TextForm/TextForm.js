@@ -54,6 +54,12 @@ export default function TextForm(props) {
     setCount(countOcc(txt, findWord));
     console.log(countOcc(txt, findWord));
   };
+  const handleReplaceAllClick = () => {
+    let find = new RegExp(tofind, "g");
+    let myText = txt.replace(find, toreplace);
+    setTxt(myText);
+    props.showAlert(`Replaced ${toreplace} with ${tofind}`, "success");
+  };
   const handleClearClick = () => {
     let newText = "";
     setTxt(newText);
@@ -66,7 +72,15 @@ export default function TextForm(props) {
   const handleOnWordChange = (event) => {
     setfindWord(event.target.value);
   };
+  const handleOnWordRChange = (event) => {
+    settofind(event.target.value);
+  };
+  const handleOnWordReplaceChange = (event) => {
+    settoreplace(event.target.value);
+  };
   const [findWord, setfindWord] = useState("");
+  const [tofind, settofind] = useState("");
+  const [toreplace, settoreplace] = useState("");
   const [count, setCount] = useState(0);
   const [txt, setTxt] = useState("");
   const [bold, setbold] = useState(false);
@@ -197,6 +211,24 @@ export default function TextForm(props) {
         </button>
         <h4>{count} occurences</h4>
         {/* {can be done directly by writing expression instead of event handling with button} */}
+        <h4>Find and Replace</h4>
+        <h5>Find </h5>
+        <input
+          type="text"
+          value={tofind}
+          placeholder="Find Something!"
+          onChange={handleOnWordRChange}
+        />{" "}
+        <h5>Replace</h5>
+        <input
+          type="text"
+          value={toreplace}
+          placeholder="To Replace!"
+          onChange={handleOnWordReplaceChange}
+        />{" "}
+        <button className="btn btn-primary" onClick={handleReplaceAllClick}>
+          Replace All
+        </button>
       </div>
     </>
   );
