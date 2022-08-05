@@ -45,7 +45,9 @@ export default function About(props) {
             >
               <div className="card-body" style={customStyle}>
                 Texticles gives you a way to analyze your text quickly and
-                efficiently. Be it word count, character count or
+                efficiently. Toggle between different font styles. Count the
+                words and characters in your text. Also now you can use Find and
+                Replace feature
               </div>
             </div>
           </div>

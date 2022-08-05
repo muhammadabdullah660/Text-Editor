@@ -50,6 +50,18 @@ export default function TextForm(props) {
       setitalic(true);
     }
   };
+  const toggleCenter = () => {
+    let newText = document.getElementById("myBox");
+    if (!center) {
+      newText.style.textAlign = "center";
+      props.showAlert("Center Aligned", "success");
+      setcenter(true);
+    } else {
+      newText.style.textAlign = "left";
+      props.showAlert("Default", "success");
+      setcenter(false);
+    }
+  };
   const handleFindClick = () => {
     setCount(countOcc(txt, findWord));
     console.log(countOcc(txt, findWord));
@@ -85,6 +97,10 @@ export default function TextForm(props) {
   const [txt, setTxt] = useState("");
   const [bold, setbold] = useState(false);
   const [italic, setitalic] = useState(false);
+  const [center, setcenter] = useState(false);
+  const [left, setleft] = useState(false);
+  const [right, setright] = useState(false);
+  const [justify, setjustify] = useState(false);
   return (
     <>
       <div className="container">
@@ -106,7 +122,7 @@ export default function TextForm(props) {
                       className="custom-control-label"
                       htmlFor="customSwitch3"
                     >
-                      Italic{" "}
+                      Italic
                     </label>
                   </div>
                 </div>
@@ -123,12 +139,26 @@ export default function TextForm(props) {
                       className="custom-control-label"
                       htmlFor="customSwitch2"
                     >
-                      Bold{" "}
+                      Bold
                     </label>
                   </div>
                 </div>
-                <div className="col-5"></div>
-                <div className="col-5"></div>
+                <div className="col-1 col-sm-4">
+                  <div className="custom-control custom-switch my-3 mx-2">
+                    <input
+                      type="checkbox"
+                      className="custom-control-input "
+                      id="customSwitch4"
+                      onClick={toggleCenter}
+                    />
+                    <label
+                      className="custom-control-label"
+                      htmlFor="customSwitch4"
+                    >
+                      Center Align
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -151,28 +181,28 @@ export default function TextForm(props) {
             disabled={txt.length === 0}
           >
             Convert to Uppercase
-          </button>{" "}
+          </button>
           <button
             className="btn btn-primary mx-1 my-1"
             onClick={handleLoCaseClick}
             disabled={txt.length === 0}
           >
             Convert to Lowercase
-          </button>{" "}
+          </button>
           <button
             className="btn btn-primary mx-1 my-1"
             onClick={handleClearClick}
             disabled={txt.length === 0}
           >
             Clear Text
-          </button>{" "}
+          </button>
           <button
             className="btn btn-primary mx-1 my-1"
             disabled={txt.length === 0}
             onClick={handleCopy}
           >
             Copy Text
-          </button>{" "}
+          </button>
           <button
             className="btn btn-primary mx-1 my-1"
             disabled={txt.length === 0}
@@ -190,10 +220,10 @@ export default function TextForm(props) {
         </h4>
         {/* Tells time required to read depending on number of words */}
         <h4>
-          Total time to read the text :{" "}
+          Total time to read the text :
           {/* "S" for white spaces..."+" for one or more */}
           {(txt.match(/\S+/g) || []).length * 0.008} minutes
-        </h4>{" "}
+        </h4>
         <br />
         {/* Simple preview of text */}
         <h3>Text Preview</h3>
@@ -205,7 +235,7 @@ export default function TextForm(props) {
           value={findWord}
           placeholder="Find Something!"
           onChange={handleOnWordChange}
-        />{" "}
+        />
         <button className="btn btn-primary" onClick={handleFindClick}>
           Find
         </button>
@@ -218,14 +248,14 @@ export default function TextForm(props) {
           value={tofind}
           placeholder="Find Something!"
           onChange={handleOnWordRChange}
-        />{" "}
+        />
         <h5>Replace</h5>
         <input
           type="text"
           value={toreplace}
           placeholder="To Replace!"
           onChange={handleOnWordReplaceChange}
-        />{" "}
+        />
         <button className="btn btn-primary" onClick={handleReplaceAllClick}>
           Replace All
         </button>
