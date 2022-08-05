@@ -7,10 +7,7 @@ export default function TextForm(props) {
     return count;
   };
   const handleCopy = () => {
-    let text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+    navigator.clipboard.writeText(txt);
     props.showAlert("Copied to Clipboard", "success");
   };
   const handleExtraSpace = () => {
@@ -29,6 +26,30 @@ export default function TextForm(props) {
     setTxt(newText);
     props.showAlert("Converted to Lowercase", "success");
   };
+  const toggleBold = () => {
+    let newText = document.getElementById("myBox");
+    if (bold) {
+      newText.style.fontWeight = "100";
+      props.showAlert("Normal", "success");
+      setbold(false);
+    } else {
+      newText.style.fontWeight = "900";
+      props.showAlert("Bold", "success");
+      setbold(true);
+    }
+  };
+  const toggleItalic = () => {
+    let newText = document.getElementById("myBox");
+    if (italic) {
+      newText.style.fontStyle = "normal";
+      props.showAlert("Normal", "success");
+      setitalic(false);
+    } else {
+      newText.style.fontStyle = "italic";
+      props.showAlert("Italic", "success");
+      setitalic(true);
+    }
+  };
   const handleFindClick = () => {
     setCount(countOcc(txt, findWord));
     console.log(countOcc(txt, findWord));
@@ -45,15 +66,58 @@ export default function TextForm(props) {
   const handleOnWordChange = (event) => {
     setfindWord(event.target.value);
   };
-  const [findWord, setfindWord] = useState("Enter your text here");
+  const [findWord, setfindWord] = useState("");
   const [count, setCount] = useState(0);
-  const [txt, setTxt] = useState("States are here");
+  const [txt, setTxt] = useState("");
+  const [bold, setbold] = useState(false);
+  const [italic, setitalic] = useState(false);
   return (
     <>
       <div className="container">
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="form-group">
             <h4>{props.heading}</h4>
+            <div className="container">
+              <div className="row">
+                <div className="col-1 col-sm-4">
+                  {/* Switch Button */}
+                  <div className="custom-control custom-switch my-3 mx-2">
+                    <input
+                      type="checkbox"
+                      className="custom-control-input "
+                      id="customSwitch3"
+                      onClick={toggleItalic}
+                    />
+                    <label
+                      className="custom-control-label"
+                      htmlFor="customSwitch3"
+                    >
+                      Italic{" "}
+                    </label>
+                  </div>
+                </div>
+                <div className="col-1 col-sm-4">
+                  {/* Switch Button */}
+                  <div className="custom-control custom-switch my-3 mx-2">
+                    <input
+                      type="checkbox"
+                      className="custom-control-input "
+                      id="customSwitch2"
+                      onClick={toggleBold}
+                    />
+                    <label
+                      className="custom-control-label"
+                      htmlFor="customSwitch2"
+                    >
+                      Bold{" "}
+                    </label>
+                  </div>
+                </div>
+                <div className="col-5"></div>
+                <div className="col-5"></div>
+              </div>
+            </div>
+
             <textarea
               style={{
                 backgroundColor: props.mode === "light" ? "white" : "#424445",
@@ -63,6 +127,7 @@ export default function TextForm(props) {
               id="myBox"
               rows="5"
               value={txt}
+              placeholder="Enter Your Text Here!"
               onChange={handleOnChange}
             ></textarea>
           </div>
@@ -112,6 +177,7 @@ export default function TextForm(props) {
         {/* Tells time required to read depending on number of words */}
         <h4>
           Total time to read the text :{" "}
+          {/* "S" for white spaces..."+" for one or more */}
           {(txt.match(/\S+/g) || []).length * 0.008} minutes
         </h4>{" "}
         <br />
@@ -123,6 +189,7 @@ export default function TextForm(props) {
         <input
           type="text"
           value={findWord}
+          placeholder="Find Something!"
           onChange={handleOnWordChange}
         />{" "}
         <button className="btn btn-primary" onClick={handleFindClick}>
